@@ -1,0 +1,23 @@
+@tailwind base;
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffef;
+}
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+/* #9e1918 - najjaca crvena */
+/* #d75b3f crvena  */
+/* #a62817 jaca crvena */
+/* #e4eeff svetlo plava */
+/* #ffeae4 roze bledo */
+/* #ffffef žućkasta  */
+/* #f9943b narandzasta svetlija(pumpkin) */
+/* #c85103 narandzasta tamnija */
