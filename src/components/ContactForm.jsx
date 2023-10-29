@@ -17,9 +17,9 @@ const ContactForm = () => {
     mode: "onChange",
     delayError: 1000,
     defaultValues: {
-      // user_name: "",
+      user_name: "",
       user_email: "",
-      // message: "",
+      message: "",
     },
   });
 
@@ -46,22 +46,22 @@ const ContactForm = () => {
   //     );
   // };
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
-    const myMail = getValues("user_email");
-    console.log(myMail);
+  // const sendEmail = async (e) => {
+  //   e.preventDefault();
+  //   const myMail = getValues("user_email");
+  //   console.log(myMail);
 
-    const data = {
-      email: myMail,
-    };
+  //   const data = {
+  //     email: myMail,
+  //   };
 
-    const response = await axios.post(
-      "http://localhost:5000/api/sendemail",
-      data
-    );
+  //   const response = await axios.post(
+  //     "http://localhost:5000/api/sendemail",
+  //     data
+  //   );
 
-    console.log(response.data);
-  };
+  //   console.log(response.data);
+  // };
 
   return (
     <section className="max-w-[900px] mx-auto my-4">
@@ -70,19 +70,21 @@ const ContactForm = () => {
           e.preventDefault();
           // sendEmail(e);
 
+          const myName = getValues("user_name");
           const myMail = getValues("user_email");
-          console.log(myMail);
+          const myMessage = getValues("message");
+          console.log(myMail, myMessage);
 
           const data = {
-            email: myMail,
+            myName: myName,
+            myEmail: myMail,
+            myMessage: myMessage,
           };
 
           const response = axios.post(
             "http://localhost:5000/api/sendemail",
             data
           );
-
-          console.log(response.data);
 
           setMessageSent(`
             ${
@@ -98,7 +100,7 @@ const ContactForm = () => {
         }}
       >
         {/* name input section */}
-        {/* <div className="mb-4 w-full mx-auto">
+        <div className="mb-4 w-full mx-auto">
           <div>
             <label
               htmlFor="user_name"
@@ -128,12 +130,12 @@ const ContactForm = () => {
               name="user_name"
               className="border-4 border-[#a62817] w-full h-12 rounded-lg px-2 text-xl"
             />
-          </div> */}
-        {/* error message paragraph */}
-        {/* <p role="alert" className="text-xl font-bold text-[#a62817]">
+          </div>
+          {/* error message paragraph */}
+          <p role="alert" className="text-xl font-bold text-[#a62817]">
             {errors?.user_name?.message}
           </p>
-        </div> */}
+        </div>
 
         {/* email input section */}
         <div className="mb-4 w-full mx-auto">
@@ -176,7 +178,7 @@ const ContactForm = () => {
         </div>
 
         {/* message input section */}
-        {/* <div className="mb-4 w-full mx-auto">
+        <div className="mb-4 w-full mx-auto">
           <div>
             <label
               htmlFor="message"
@@ -208,12 +210,12 @@ const ContactForm = () => {
               className="border-4 border-[#a62817] w-full h-40 rounded-lg px-2 text-xl"
               name="message"
             />
-          </div> */}
-        {/* error message paragraph */}
-        {/* <p role="alert" className="text-xl font-bold text-[#a62817]">
+          </div>
+          {/* error message paragraph */}
+          <p role="alert" className="text-xl font-bold text-[#a62817]">
             {errors?.message?.message}
           </p>
-        </div> */}
+        </div>
 
         {/* submit button section */}
         <div className="mb-4 w-full mx-auto lg:text-center">
