@@ -23,57 +23,15 @@ const ContactForm = () => {
     },
   });
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-
-  //   emailjs
-  //     .sendForm(
-  //       // Service ID
-  //       "service_3egksr6",
-  //       // Template ID
-  //       "template_r9vccgt",
-  //       form.current,
-  //       // Public key
-  //       "V8zB59DCrXsYkcmjt"
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  // };
-
-  // const sendEmail = async (e) => {
-  //   e.preventDefault();
-  //   const myMail = getValues("user_email");
-  //   console.log(myMail);
-
-  //   const data = {
-  //     email: myMail,
-  //   };
-
-  //   const response = await axios.post(
-  //     "http://localhost:5000/api/sendemail",
-  //     data
-  //   );
-
-  //   console.log(response.data);
-  // };
-
   return (
     <section className="max-w-[900px] mx-auto my-4">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // sendEmail(e);
 
           const myName = getValues("user_name");
           const myMail = getValues("user_email");
           const myMessage = getValues("message");
-          console.log(myMail, myMessage);
 
           const data = {
             myName: myName,
