@@ -12,8 +12,8 @@ node_modules
 
 # misc
 .env
-# /server/node_modules/
-# /server/.env
+/server/node_modules/
+/server/.env
 .DS_Store
 .env.local
 .env.development.local
