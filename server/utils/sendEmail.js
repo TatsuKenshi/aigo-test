@@ -43,6 +43,8 @@ const sendEmail = async (req, res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log(req.body);
 
+  // msg object
+
   const msg = {
     to: "rockinbg@gmail.com", // Change to your recipient
     from: "rockinbg@gmail.com", // Change to your verified sender
