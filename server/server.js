@@ -12,26 +12,29 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Route
-app.get("/", (req, res) => {
+app.get("/api/sendemail", (req, res) => {
   res.send("Home Page");
 });
 app.post("/api/sendemail", async (req, res) => {
-  const { myName, myEmail, myMessage } = req.body;
-  console.log(req.body);
+  // const { myName, myEmail, myMessage } = req.body;
+  // console.log(req.body);
 
   try {
-    const send_to = myEmail;
-    const sent_from = process.env.EMAIL_USER;
-    const reply_to = myEmail;
-    const subject = `Aigo Contact Form - message from ${myName}`;
-    const message = `<p>${myMessage}</p> <p>My email is ${myEmail}</p>`;
+    // const send_to = myEmail;
+    // const sent_from = process.env.EMAIL_USER;
+    // const reply_to = myEmail;
+    // const subject = `Aigo Contact Form - message from ${myName}`;
+    // const message = `<p>${myMessage}</p> <p>My email is ${myEmail}</p>`;
 
-    await sendEmail(subject, message, send_to, sent_from, reply_to);
-    res.status(200).json({ success: true, message: "email sent" });
+    // await sendEmail(subject, message, send_to, sent_from, reply_to);
+    await sendEmail(req, res);
+    // res.status(200).json({ success: true, message: "email sent" });
   } catch (error) {
-    res.status(500).json(error.message);
+    // res.status(500).json(error.message);
   }
 });
+
+// app.post("/api/sendemail", sendEmail);
 
 const PORT = process.env.PORT || 5000;
 
