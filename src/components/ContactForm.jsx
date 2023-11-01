@@ -68,6 +68,8 @@ const ContactForm = () => {
   return (
     <section className="max-w-[900px] mx-auto my-4">
       <form
+        data-netlify="true"
+        data-netlify-recaptcha="true"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
