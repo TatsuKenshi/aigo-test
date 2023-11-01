@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import i18next from "i18next";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
   const [messageSent, setMessageSent] = useState("");
   const navigate = useNavigate();
   const language = i18next.language;
+  const captchaRef = useRef(null);
+  const captchaUrl = process.env.REACT_APP_CAPTCHA_URL;
+  const emailUrl = process.env.REACT_APP_EMAIL_URL;
 
   const {
     register,
@@ -23,38 +27,49 @@ const ContactForm = () => {
     },
   });
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
+    try {
+      const response = await axios.post(captchaUrl, {
+        token,
+      });
+
+      if (response.status === 200) {
+        const myName = getValues("user_name");
+        const myMail = getValues("user_email");
+        const myMessage = getValues("message");
+        const data = {
+          myName: myName,
+          myEmail: myMail,
+          myMessage: myMessage,
+        };
+
+        setMessageSent(`
+          ${
+            language === "en"
+              ? "Your message has been sent. You will be redirected to the home page shortly."
+              : "Vaša poruka je poslata. Ubrzo ćete biti prebačeni na početnu stranu."
+          }
+          `);
+
+        setTimeout(() => {
+          navigate("/");
+        }, 7000);
+
+        const sendMail = await axios.post(emailUrl, data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="max-w-[900px] mx-auto my-4">
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-
-          const myName = getValues("user_name");
-          const myMail = getValues("user_email");
-          const myMessage = getValues("message");
-
-          const data = {
-            myName: myName,
-            myEmail: myMail,
-            myMessage: myMessage,
-          };
-
-          const response = axios.post(
-            "http://localhost:5000/api/sendemail",
-            data
-          );
-
-          setMessageSent(`
-            ${
-              language === "en"
-                ? "Your message has been sent. You will be redirected to the home page shortly."
-                : "Vaša poruka je poslata. Ubrzo ćete biti prebačeni na početnu stranu."
-            }
-          `);
-
-          // setTimeout(() => {
-          //   navigate("/");
-          // }, 5000);
+          handleSubmit(e);
         }}
       >
         {/* name input section */}
@@ -173,6 +188,14 @@ const ContactForm = () => {
           <p role="alert" className="text-xl font-bold text-[#a62817]">
             {errors?.message?.message}
           </p>
+        </div>
+
+        {/* reCAPTCHA section */}
+        <div className="mb-4 w-full mx-auto flex justify-center">
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_SITE_KEY}
+            ref={captchaRef}
+          />
         </div>
 
         {/* submit button section */}
