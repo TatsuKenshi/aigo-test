@@ -6,12 +6,12 @@ import SectionLoading from "../components/SectionLoading";
 
 const Intro = lazy(() => import("../components/Intro"));
 const MenuPreview = lazy(() => import("../components/MenuPreview"));
+const Testimonials = lazy(() => import("../components/Testimonials"));
 
 const HomePage = () => {
   // page title customization and localization
   const { changeTitle } = usePageTitle();
   const language = i18n.language;
-  console.log(language);
 
   useEffect(() => {
     changeTitle({ language: language, enTitle: "Home", srTitle: "Početna" });
@@ -24,6 +24,9 @@ const HomePage = () => {
       </Suspense>
       <Suspense fallback={<SectionLoading />}>
         <MenuPreview />
+      </Suspense>
+      <Suspense fallback={<SectionLoading />}>
+        <Testimonials />
       </Suspense>
     </section>
   );

@@ -35,7 +35,14 @@ const Contact = () => {
           veniam dolore ad distinctio iusto sed provident eos in magni, vero
           reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
           tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
+          excepturi modi. Esse, magnam? If you'd like to collaborate with us,
+          please send us an email at:{" "}
+          <a
+            href="mailto:office@aigokoreanfood.rs"
+            className="underline hover:text-[#d75b3f]"
+          >
+            office@aigokoreanfood.rs
+          </a>
         </p>
       </div>
 

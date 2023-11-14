@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import logo from "../assets/images/logo-small.png";
+import glovo from "../assets/images/glovo-logo.png";
+import mrd from "../assets/images/mrd-logo.png";
+import wolt from "../assets/images/wolt-logo.png";
 
 const Footer = () => {
   return (
@@ -12,6 +15,19 @@ const Footer = () => {
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <div>
             <img src={logo} alt="logo" className="w-16 h-16" />
+          </div>
+          <h4 className="mt-2">Aigo Partners</h4>
+          <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
+          <div className="flex">
+            <a href="https://glovoapp.com/" target="_blank" rel="noreferrer">
+              <img src={glovo} alt="logo" className="w-12 h-12 mr-4" />
+            </a>
+            <a href="https://misterd.rs/" target="_blank" rel="noreferrer">
+              <img src={mrd} alt="logo" className="w-12 h-12 mr-4" />
+            </a>
+            <a href="https://wolt.com/sr/srb" target="_blank" rel="noreferrer">
+              <img src={wolt} alt="logo" className="w-12 h-12" />
+            </a>
           </div>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/4 mb-12 md:mb-8">
@@ -42,8 +58,10 @@ const Footer = () => {
               info@aigokoreanfood.rs
             </a>
             <br />
+            For business inquiries
+            <br />
             <a href="" className="underline">
-              mgmt@aigokoreanfood.rs
+              office@aigokoreanfood.rs
             </a>
           </p>
         </div>
