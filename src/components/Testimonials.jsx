@@ -6,7 +6,9 @@ const Testimonials = () => {
 
   const getAllItems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/tasks");
+      const response = await axios.get("http://localhost:5000/api/v1/tasks", {
+        mode: "cors",
+      });
 
       const data = response.data.tasks;
       console.log(data);
