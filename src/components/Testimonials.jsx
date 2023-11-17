@@ -6,11 +6,8 @@ const Testimonials = () => {
 
   const getAllItems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/tasks", {
-        mode: "cors",
-      });
-
-      const data = response.data.tasks;
+      const response = await axios.get("http://localhost:5000/testimonials");
+      const data = response.data.testimonials;
       console.log(data);
       setItems(data);
     } catch (error) {}
@@ -24,7 +21,13 @@ const Testimonials = () => {
     <div>
       {items.map((item) => {
         const id = item._id;
-        return <p key={id}>{item.name}</p>;
+        console.log(item.image);
+        return (
+          <article key={id}>
+            <p>{item.name}</p>
+            <img src={item.image} alt={item.name} />
+          </article>
+        );
       })}
     </div>
   );
