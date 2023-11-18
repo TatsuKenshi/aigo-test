@@ -1,11 +1,41 @@
-import React from "react";
-import { FaBeer } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 import mission from "../assets/images/mission.png";
 import vision from "../assets/images/vision.png";
+import axios from "axios";
 
 const FuturePlans = () => {
+  const [missions, setMissions] = useState([]);
+  const [plans, setPlans] = useState([]);
+  const missionsUrl = process.env.REACT_APP_MISSIONS_URL;
+  const plansUrl = process.env.REACT_APP_PLANS_URL;
+
+  const getAllMissions = async () => {
+    try {
+      const response = await axios.get(missionsUrl);
+      const data = response.data.missions;
+      setMissions(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllPlans = async () => {
+    try {
+      const response = await axios.get(plansUrl);
+      const data = response.data.plans;
+      setPlans(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllMissions();
+    getAllPlans();
+  }, []);
+
   return (
     <section className="p-8 bg-[#ffffef]">
       {/* title div */}
@@ -27,7 +57,7 @@ const FuturePlans = () => {
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-8 mt-8">
         <article className="hover:shadow-lg">
           <div className="w-full py-8 grid place-content-center">
-            <ProgressiveImage src={mission} placeholder={heroSmall}>
+            <ProgressiveImage src={missions?.[0]?.img} placeholder={heroSmall}>
               {(src, loading) => (
                 <img
                   src={src}
@@ -41,12 +71,10 @@ const FuturePlans = () => {
           </div>
           <div className="p-2">
             <h2 className="text-[#a62817] capitalize font-bold text-2xl">
-              Our Mission
+              {missions?.[0]?.titleEng}
             </h2>
             <p className="my-2 text-md text-slate-800 text-justify">
-              At Aigo, we're committed to bringing the best Korean dishes
-              straight to you, so you can experience the flavors and traditions
-              of this rich culinary heritage.
+              {missions?.[0]?.textEng}
             </p>
           </div>
         </article>
@@ -54,16 +82,14 @@ const FuturePlans = () => {
         <article className="hover:shadow-lg">
           <div className="p-2">
             <h2 className="text-[#a62817] capitalize font-bold text-2xl">
-              Our Vision
+              {missions?.[1]?.titleSrb}
             </h2>
             <p className="my-2 text-md text-slate-800 text-justify">
-              To share the joy of Korean cuisine with as many people as
-              possible, by providing exceptional food and service that exceeds
-              expectations.
+              {missions?.[1]?.textSrb}
             </p>
           </div>
           <div className="w-full py-8 grid place-content-center">
-            <ProgressiveImage src={vision} placeholder={heroSmall}>
+            <ProgressiveImage src={missions?.[1]?.img} placeholder={heroSmall}>
               {(src, loading) => (
                 <img
                   src={src}
@@ -86,50 +112,18 @@ const FuturePlans = () => {
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
 
         <div className="p-2 grid md:grid-cols-2 gap-8">
-          <div>
-            <p className="mt-4 md:mt-0 text-[#a62817] font-bold text-xl">
-              Introduction of monthly specials
-            </p>
-            <p className="text-md text-slate-800 text-justify">
-              Create monthly specials, starting in the first quarter of 2024.
-              Create monthly specials, starting in the first quarter of 2024.
-              Create monthly specials, starting in the first quarter of 2024.
-            </p>
-          </div>
-          <div>
-            <p className="text-[#a62817] font-bold text-xl">
-              Create a loyalty program
-            </p>
-            <p className="text-md text-slate-800 text-justify">
-              The program aims to enhance the dining experience, encourage
-              repeat visits, and foster a sense of belonging within the Aigo
-              community
-            </p>
-          </div>
-          <div>
-            <p className="text-[#a62817] font-bold text-xl">
-              Open a physical store
-            </p>
-            <p className="text-md text-slate-800 text-justify">
-              We want to open up our restaurant and expand our business
-            </p>
-          </div>
-          <div>
-            <p className="text-[#a62817] font-bold text-xl">
-              Community Engagement
-            </p>
-            <p className="text-md text-slate-800 text-justify">
-              Support local charities, host cultural workshops. Support local
-              charities, host cultural workshops.
-            </p>
-          </div>
-          <div>
-            <p className="text-[#a62817] font-bold text-xl">Impact</p>
-            <p className="text-md text-slate-800 text-justify">
-              Elevate perception of Korean cuisine, promote sustainability in
-              dining.
-            </p>
-          </div>
+          {plans.map((plan) => {
+            return (
+              <div key={plan._id}>
+                <p className="mt-4 md:mt-0 text-[#a62817] font-bold text-xl">
+                  {plan.titleEng}
+                </p>
+                <p className="text-md text-slate-800 text-justify">
+                  {plan.textEng}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

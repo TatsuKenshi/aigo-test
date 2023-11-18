@@ -1,7 +1,7 @@
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 
-const TeamMember = ({ name, job, image, text }) => {
+const TeamMember = ({ name, job, image, textEng, textSrb, jobEng, jobSrb }) => {
   return (
     <article className="bg-white hover:shadow-lg">
       <div className="w-full h-[45vw] sm:h-[50vw] md:h-[30vw] lg:h-[350px]">
@@ -22,10 +22,10 @@ const TeamMember = ({ name, job, image, text }) => {
           {name}
         </p>
         <p className="my-2 text-[#d75b3f] font-bold capitalize text-xl">
-          {job}
+          {jobEng}
         </p>
         <p className="my-2 text-md text-slate-800 h-content min-h-32 text-justify">
-          {text}
+          {textEng}
         </p>
       </div>
     </article>

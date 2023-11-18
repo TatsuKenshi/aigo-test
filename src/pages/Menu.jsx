@@ -1,22 +1,47 @@
-import { useEffect, lazy, Suspense } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import { useOutletContext } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import i18n from "../i18n";
-import SectionLoading from "../components/SectionLoading";
+// import SectionLoading from "../components/SectionLoading";
 import { withNamespaces } from "react-i18next";
-
-const MenuItemCard = lazy(() => import("../components/MenuItemCard"));
-const SideDishCard = lazy(() => import("../components/SideDishCard"));
+import MenuItemCard from "../components/MenuItemCard";
+import SideDishCard from "../components/SideDishCard";
+import axios from "axios";
 
 const Menu = () => {
-  const { menuItemsShort, sideDishes } = useOutletContext();
-  console.log(sideDishes);
+  // const { menuItemsShort, sideDishes } = useOutletContext();
+  const [menuItems, setMenuItems] = useState([]);
+  const [sides, setSides] = useState([]);
+  const menuItemsUrl = process.env.REACT_APP_MENU_ITEMS_URL;
+  const sidesUrl = process.env.REACT_APP_SIDES_URL;
+
+  const getAllMenuItems = async () => {
+    try {
+      const response = await axios.get(menuItemsUrl);
+      const data = response.data.shortmenuitems;
+      setMenuItems(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllSideItems = async () => {
+    try {
+      const response = await axios.get(sidesUrl);
+      const data = response.data.sides;
+      setSides(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const { changeTitle } = usePageTitle();
   const language = i18n.language;
 
   useEffect(() => {
     changeTitle({ language: language, enTitle: "Menu", srTitle: "Meni" });
+    getAllMenuItems();
+    getAllSideItems();
   }, [language, changeTitle]);
 
   return (
@@ -36,12 +61,8 @@ const Menu = () => {
       </div>
 
       <div className="grid gap-4 lg:gap-8 max-w-[1200px] md:grid-cols-2 mx-auto">
-        {menuItemsShort.map((item) => {
-          return (
-            <Suspense fallback={<SectionLoading />}>
-              <MenuItemCard key={item.id} {...item} />
-            </Suspense>
-          );
+        {menuItems.map((item) => {
+          return <MenuItemCard key={item._id} {...item} />;
         })}
       </div>
 
@@ -60,12 +81,8 @@ const Menu = () => {
       </div>
 
       <div className="max-w-[1200px] mx-auto mb-8">
-        {sideDishes.map((item) => {
-          return (
-            <Suspense fallback={<SectionLoading />}>
-              <SideDishCard key={item.id} {...item} />
-            </Suspense>
-          );
+        {sides.map((item) => {
+          return <SideDishCard key={item._id} {...item} />;
         })}
       </div>
     </section>

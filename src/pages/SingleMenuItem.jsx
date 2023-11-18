@@ -2,22 +2,42 @@ import { useState, useEffect } from "react";
 import { useOutletContext, useParams, useNavigate } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
+import axios from "axios";
 
 const SingleMenuItem = () => {
-  const { item, setItem, menuItemsFull, sideDishes } = useOutletContext();
-  const [bigImage, setBigImage] = useState();
+  const [item, setItem] = useState({});
+  const [sides, setSides] = useState([]);
+  const [bigImage, setBigImage] = useState("");
   const myID = useParams();
   const navigate = useNavigate();
+  const fullMenuItemUrl = process.env.REACT_APP_FULL_MENU_ITEM_URL;
+  const sidesUrl = process.env.REACT_APP_SIDES_URL;
 
-  const itemImages = Object.keys(item)
-    .filter((key) => key.startsWith("imgs"))
-    .map((key) => item[key]);
-  const imagesObject = itemImages?.[0];
+  const getSingleMenuItem = async () => {
+    try {
+      const response = await axios.get(`${fullMenuItemUrl}${myID.id}`);
+      const data = response.data.menuitem;
+      setBigImage(data.bigImg);
+      setItem(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllSideItems = async () => {
+    try {
+      const response = await axios.get(sidesUrl);
+      const data = response.data.sides;
+      setSides(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    setItem(menuItemsFull[myID.id]);
-    setBigImage(item?.imgs?.[0]);
-  }, [item?.imgs, myID.id, setItem, menuItemsFull, setBigImage]);
+    getSingleMenuItem();
+    getAllSideItems();
+  }, []);
 
   return (
     <div className="mx-8 my-16 grid md:grid-cols-2 lg:max-w-[1200px] lg:mx-auto lg:px-8">
@@ -25,8 +45,8 @@ const SingleMenuItem = () => {
         <ProgressiveImage src={bigImage} placeholder={heroSmall}>
           {(src, loading) => (
             <img
-              src={src}
-              alt={item.name}
+              src={bigImage}
+              alt={item?.name}
               className={`image${
                 loading ? " loading" : " loaded"
               } w-full mb-2 sm:mb-4 h-[50vw] md:h-[35vw] lg:h-[350px]`}
@@ -34,13 +54,14 @@ const SingleMenuItem = () => {
           )}
         </ProgressiveImage>
         <div className="flex justify-between">
-          {imagesObject &&
-            imagesObject.map((image, index) => {
+          {item?.imgs &&
+            item?.imgs.map((image, index) => {
               return (
                 <button
+                  key={index}
                   className="w-[18%] h-[12vw] md:h-[6vw] lg:h-[60px] overflow-hidden"
                   onClick={() => {
-                    setBigImage(imagesObject[index]);
+                    setBigImage(item?.imgs[index]);
                   }}
                 >
                   <img src={image} alt={image} className="w-full h-full" />
@@ -57,7 +78,7 @@ const SingleMenuItem = () => {
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
           <span className="text-[#d75b3f] font-bold">Description: </span>{" "}
-          {item?.desc}
+          {item?.descEng}
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
@@ -81,7 +102,7 @@ const SingleMenuItem = () => {
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
           <span className="text-[#d75b3f] font-bold">Side Dishes: </span>
-          {sideDishes.map((dish, index) => {
+          {sides.map((dish, index) => {
             return (
               <button
                 key={index}

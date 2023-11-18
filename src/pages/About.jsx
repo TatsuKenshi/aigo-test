@@ -12,7 +12,6 @@ const About = () => {
   // page title customization and localization
   const { changeTitle } = usePageTitle();
   const language = i18n.language;
-  console.log(language);
 
   useEffect(() => {
     changeTitle({ language: language, enTitle: "About", srTitle: "O nama" });

@@ -1,9 +1,26 @@
-import { useOutletContext } from "react-router-dom";
+// import { useOutletContext } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import TeamMember from "../components/TeamMember";
 
 const Team = () => {
-  const { people } = useOutletContext();
-  console.log(people);
+  // const { people } = useOutletContext();
+  const [employees, setEmployees] = useState([]);
+  const employeesUrl = process.env.REACT_APP_EMPLOYEES_URL;
+
+  const getAllEmployees = async () => {
+    try {
+      const response = await axios.get(employeesUrl);
+      const data = response.data.employees;
+      setEmployees(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllEmployees();
+  });
 
   return (
     <section className="pb-8 px-8">
@@ -25,8 +42,8 @@ const Team = () => {
 
       <div className="max-w-[1200px] mx-auto mt-8">
         <div className="grid gap-8 md:grid-cols-2">
-          {people.map((person) => {
-            return <TeamMember key={person.id} {...person} />;
+          {employees.map((employee) => {
+            return <TeamMember key={employee._id} {...employee} />;
           })}
         </div>
       </div>

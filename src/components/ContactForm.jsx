@@ -36,7 +36,9 @@ const ContactForm = () => {
         token,
       });
 
-      if (response.status === 200) {
+      console.log(response);
+
+      if (response.data === "Human 👨 👩") {
         const myName = getValues("user_name");
         const myMail = getValues("user_email");
         const myMessage = getValues("message");
@@ -59,6 +61,14 @@ const ContactForm = () => {
         }, 7000);
 
         const sendMail = await axios.post(emailUrl, data);
+      } else {
+        setMessageSent(`
+          ${
+            language === "en"
+              ? "Your message wasn't sent. Refresh the page and complete the captcha first."
+              : "Vaša poruka nije poslata. Osvezite stranicu i kompletirajete captcha test pre slanja."
+          }
+          `);
       }
     } catch (error) {
       console.log(error);
@@ -202,6 +212,7 @@ const ContactForm = () => {
 
         {/* submit button section */}
         <div className="mb-4 w-full mx-auto lg:text-center">
+          {/* {captchaRef?.current?.state ? ( */}
           <button
             type="submit"
             className="border-4 border-[#a62817] text-[#a62817] font-bold rounded-lg px-2 py-1 text-xl w-full lg:w-64"
@@ -209,6 +220,7 @@ const ContactForm = () => {
           >
             {language === "en" ? "Send" : "Pošalji"}
           </button>
+          {/* ) : null} */}
         </div>
 
         {/* message sent section */}

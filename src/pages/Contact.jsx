@@ -2,9 +2,6 @@ import { useEffect, lazy, Suspense } from "react";
 import usePageTitle from "../hooks/usePageTitle";
 import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
-// import ContactForm from "../components/ContactForm";
-// import Map from "../components/Map";
-// import ContactSection from "../components/ContactSection";
 import SectionLoading from "../components/SectionLoading";
 
 const ContactForm = lazy(() => import("../components/ContactForm"));
@@ -15,7 +12,6 @@ const Contact = () => {
   // page title customization and localization
   const { changeTitle } = usePageTitle();
   const language = i18n.language;
-  console.log(language);
 
   useEffect(() => {
     changeTitle({ language: language, enTitle: "Contact", srTitle: "Kontakt" });

@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 
-const MenuItemCard = ({ id, img, name, price, desc }) => {
+const MenuItemCard = ({ _id: id, img, name, price, descEng, descSrb }) => {
   const { setItem } = useOutletContext();
 
   return (
@@ -27,7 +27,7 @@ const MenuItemCard = ({ id, img, name, price, desc }) => {
       </div>
       <div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
-          {desc}
+          {descEng}
         </p>
       </div>
       <Link to={`/menuitem/${id}`}>

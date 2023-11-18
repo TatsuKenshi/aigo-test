@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 
-const MenuPreviewCard = ({ img, name, price, desc }) => {
+const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
   const navigate = useNavigate();
 
   return (
@@ -21,7 +21,7 @@ const MenuPreviewCard = ({ img, name, price, desc }) => {
       <div className="py-4 px-2">
         <p className="text-[#a62817] capitalize mb-2 font-bold">{name}</p>
         <p className="text-md text-slate-800 tracking-wide mb-4 text-justify">
-          {desc}
+          {descEng}
         </p>
         <p className="mt-4 text-[#d75b3f]">{price} rsd</p>
         <div className="mt-4 flex gap-x-4">

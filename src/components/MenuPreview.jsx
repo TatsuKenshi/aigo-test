@@ -1,9 +1,26 @@
-import { useOutletContext } from "react-router-dom";
-import Loading from "./Loading";
+// import { useOutletContext } from "react-router-dom";
 import MenuPreviewCard from "./MenuPreviewCard";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const MenuPreview = () => {
-  const { menuPreview } = useOutletContext();
+  // const { menuPreview } = useOutletContext();
+  const [items, setItems] = useState([]);
+  const menuPreviewImagesUrl = process.env.REACT_APP_MENU_PREVIEW_IMAGES_URL;
+
+  const getAllMenuPreviews = async () => {
+    try {
+      const response = await axios.get(menuPreviewImagesUrl);
+      const data = response.data.menupreviews;
+      setItems(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllMenuPreviews();
+  }, []);
 
   return (
     <section className="py-8 px-8 bg-white">
@@ -24,8 +41,9 @@ const MenuPreview = () => {
       </div>
 
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-4">
-        {menuPreview.map((menuItem) => {
-          return <MenuPreviewCard key={menuItem.id} {...menuItem} />;
+        {items.map((item) => {
+          const id = item._id;
+          return <MenuPreviewCard key={id} {...item} />;
         })}
       </div>
     </section>
