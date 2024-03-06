@@ -16,7 +16,7 @@ const Intro = () => {
           veniam dolore ad distinctio iusto sed provident eos in magni, vero
           reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
           tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
+          excepturi modi. Esse, magnam? Lorem...
         </p>
       </div>
 
