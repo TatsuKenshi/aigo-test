@@ -21,7 +21,7 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
       <div className="py-4 px-2">
         <p className="text-[#a62817] capitalize mb-2 font-bold">{name}</p>
         <p className="text-md text-slate-800 tracking-wide mb-4 text-justify">
-          {descEng}
+          {descEng.substring(0, 180)}...
         </p>
         <p className="mt-4 text-[#d75b3f]">{price} rsd</p>
         <div className="mt-4 flex gap-x-4">
