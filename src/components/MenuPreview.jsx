@@ -1,12 +1,16 @@
 // import { useOutletContext } from "react-router-dom";
 import MenuPreviewCard from "./MenuPreviewCard";
 import axios from "axios";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 import { useState, useEffect } from "react";
 
 const MenuPreview = () => {
   // const { menuPreview } = useOutletContext();
   const [items, setItems] = useState([]);
   const menuPreviewImagesUrl = process.env.REACT_APP_MENU_PREVIEW_IMAGES_URL;
+
+  const language = i18n.language;
 
   const getAllMenuPreviews = async () => {
     try {
@@ -50,4 +54,4 @@ const MenuPreview = () => {
   );
 };
 
-export default MenuPreview;
+export default withNamespaces()(MenuPreview);

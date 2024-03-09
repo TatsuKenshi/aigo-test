@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 
 const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
   const navigate = useNavigate();
+
+  const language = i18n.language;
 
   return (
     <article className="bg-[#ffffef] rounded-t-lg hover:shadow-lg">
@@ -39,4 +43,4 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
   );
 };
 
-export default MenuPreviewCard;
+export default withNamespaces()(MenuPreviewCard);

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "axios";
 
@@ -7,6 +9,8 @@ const Testimonials = () => {
   const [index, setIndex] = useState(0);
   const displayItem = items?.[index];
   const testimonialsUrl = process.env.REACT_APP_TESTIMONIALS_URL;
+
+  const language = i18n.language;
 
   const getAllTestimonials = async () => {
     try {
@@ -79,4 +83,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default withNamespaces()(Testimonials);

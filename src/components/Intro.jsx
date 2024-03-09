@@ -1,9 +1,13 @@
 import { lazy, Suspense } from "react";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 import SectionLoading from "./SectionLoading";
 
 const SlickCarousel = lazy(() => import("./SlickCarousel"));
 
 const Intro = () => {
+  const language = i18n.language;
+
   return (
     <section className="px-8">
       {/* title div */}
@@ -11,12 +15,7 @@ const Intro = () => {
         <h1 className="text-[#9e1918] text-3xl font-extrabold">Gallery</h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
         <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam? Lorem...
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae nobis architecto dignissimos voluptates officiis nihil error praesentium hic, odio, numquam itaque nostrum sunt deleniti cupiditate, vero perspiciatis vitae exercitationem ipsum. Repellendus quae officia temporibus repellat quia recusandae, quam blanditiis natus accusamus quaerat atque eum, ea laudantium adipisci perspiciatis magni!
         </p>
       </div>
 
@@ -29,4 +28,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default withNamespaces()(Intro);

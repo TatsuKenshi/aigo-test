@@ -27,7 +27,7 @@ const MenuItemCard = ({ _id: id, img, name, price, descEng, descSrb }) => {
       </div>
       <div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
-          {descEng}
+        {descEng.substring(0, 250)}...
         </p>
       </div>
       <Link to={`/menuitem/${id}`}>
