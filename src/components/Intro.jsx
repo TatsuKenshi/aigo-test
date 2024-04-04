@@ -5,17 +5,17 @@ import SectionLoading from "./SectionLoading";
 
 const SlickCarousel = lazy(() => import("./SlickCarousel"));
 
-const Intro = () => {
+const Intro = ({t}) => {
   const language = i18n.language;
 
   return (
     <section className="px-8">
       {/* title div */}
       <div className="text-center my-8 max-w-[1200px] mx-auto">
-        <h1 className="text-[#9e1918] text-3xl font-extrabold">Gallery</h1>
+        <h1 className="text-[#9e1918] text-3xl font-extrabold">{t("GalerijaNaslov")}</h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
         <p className="mt-4 text-justify">
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae nobis architecto dignissimos voluptates officiis nihil error praesentium hic, odio, numquam itaque nostrum sunt deleniti cupiditate, vero perspiciatis vitae exercitationem ipsum. Repellendus quae officia temporibus repellat quia recusandae, quam blanditiis natus accusamus quaerat atque eum, ea laudantium adipisci perspiciatis magni!
+        {t("GalerijaText")}
         </p>
       </div>
 
