@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import i18n from "../i18n";
-import { withNamespaces } from "react-i18next";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 
@@ -25,7 +24,10 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
       <div className="py-4 px-2">
         <p className="text-[#a62817] capitalize mb-2 font-bold">{name}</p>
         <p className="text-md text-slate-800 tracking-wide mb-4 text-justify">
-          {descEng.substring(0, 180)}...
+          {language === "en"
+            ? descEng.substring(0, 200)
+            : descSrb.substring(0, 200)}
+          ...
         </p>
         <p className="mt-4 text-[#d75b3f]">{price} rsd</p>
         <div className="mt-4 flex gap-x-4">
@@ -35,7 +37,7 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
               navigate("/menu");
             }}
           >
-            Go to Menu
+            {language === "en" ? "Go to Menu" : "Pogledajte Meni"}
           </button>
         </div>
       </div>
@@ -43,4 +45,4 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
   );
 };
 
-export default withNamespaces()(MenuPreviewCard);
+export default MenuPreviewCard;

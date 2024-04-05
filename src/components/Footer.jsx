@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa";
 import logo from "../assets/images/logo-small.png";
 import glovo from "../assets/images/glovo-logo.png";
 import mrd from "../assets/images/mrd-logo.png";
@@ -97,7 +97,7 @@ const Footer = () => {
           </li>
           <li>
             <Link to="https://wwww.twitter.com" target="_blank">
-              <FaTwitter size="2.5rem" className="hover:fill-[#9e1918]" />
+              <FaTiktok size="2.5rem" className="hover:fill-[#9e1918]" />
             </Link>
           </li>
           <li>

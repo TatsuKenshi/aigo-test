@@ -1,7 +1,10 @@
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
+import i18n from "../i18n";
 
 const SideDishCard = ({ img, name, price, descEng, descSrb }) => {
+  const language = i18n.language;
+
   return (
     <article className="flex justify-between flex-wrap py-4 hover:shadow-lg">
       <div className="w-full md:w-4/12 max-h-[60vw] sm:max-h-[400px] md:max-h-[200px]">
@@ -21,8 +24,8 @@ const SideDishCard = ({ img, name, price, descEng, descSrb }) => {
         <p className="text-[#a62817] capitalize text-lg font-extrabold">
           {name}
         </p>
-        <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
-          {descEng}
+        <p className="text-lg text-slate-800 mb-4 text-justify">
+          {language === "en" ? descEng : descSrb}
         </p>
         <p className="text-[#d75b3f] text-lg font-bold float-right md:float-left md:bottom-0 absolute">
           {price} rsd

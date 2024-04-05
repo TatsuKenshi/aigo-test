@@ -1,20 +1,16 @@
-const Map = () => {
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
+
+const Map = ({ t }) => {
   return (
     <section className="">
       {/* title div */}
       <div className="text-center my-8 max-w-[1200px] mx-auto">
         <h1 className="text-[#9e1918] text-3xl font-extrabold">
-          How to find us
+          {t("MapaNaslov")}
         </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("MapaText")}</p>
       </div>
 
       <div className="max-w-[1200px] mx-auto">
@@ -36,4 +32,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default withNamespaces()(Map);

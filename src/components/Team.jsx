@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TeamMember from "../components/TeamMember";
+// import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 
-const Team = () => {
+const Team = ({ t }) => {
   // const { people } = useOutletContext();
   const [employees, setEmployees] = useState([]);
   const employeesUrl = process.env.REACT_APP_EMPLOYEES_URL;
@@ -23,11 +25,11 @@ const Team = () => {
   });
 
   return (
-    <section className="pb-8 px-8">
+    <section className="pb-8 px-8 pt-8">
       {/* title div */}
       <div className="text-center max-w-[1200px] mx-auto">
         <h1 className="text-[#9e1918] text-3xl font-extrabold">
-          Meet our team
+          {t("AigoTimNaslov")}
         </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
         <p className="mt-4 text-justify">
@@ -50,4 +52,4 @@ const Team = () => {
     </section>
   );
 };
-export default Team;
+export default withNamespaces()(Team);

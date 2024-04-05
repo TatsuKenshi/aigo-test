@@ -5,7 +5,7 @@ import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
 import { useState, useEffect } from "react";
 
-const MenuPreview = () => {
+const MenuPreview = ({ t }) => {
   // const { menuPreview } = useOutletContext();
   const [items, setItems] = useState([]);
   const menuPreviewImagesUrl = process.env.REACT_APP_MENU_PREVIEW_IMAGES_URL;
@@ -31,17 +31,10 @@ const MenuPreview = () => {
       {/* title div */}
       <div className="text-center my-8 max-w-[1200px] mx-auto">
         <h1 className="text-[#9e1918] text-3xl font-extrabold">
-          Aigo bestsellers
+          {t("AigoBestsellersNaslov")}
         </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("AigoBestsellersText")}</p>
       </div>
 
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-4">

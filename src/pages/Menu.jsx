@@ -8,7 +8,7 @@ import MenuItemCard from "../components/MenuItemCard";
 import SideDishCard from "../components/SideDishCard";
 import axios from "axios";
 
-const Menu = () => {
+const Menu = ({ t }) => {
   // const { menuItemsShort, sideDishes } = useOutletContext();
   const [menuItems, setMenuItems] = useState([]);
   const [sides, setSides] = useState([]);
@@ -48,16 +48,12 @@ const Menu = () => {
     <section className="px-8">
       {/* title div */}
       <div className="text-center my-8 max-w-[1200px] mx-auto">
-        <h1 className="text-[#9e1918] text-3xl font-extrabold">Main Courses</h1>
+        <h1 className="text-[#9e1918] text-3xl font-extrabold">
+          {t("MeniGlavnaJelaNaslov")}
+        </h1>
         <div className="h-1 w-48 bg-[#a62817] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("MeniGlavnaJelaText")}</p>
+        <p className="mt-4 text-justify">{t("MeniGlavnaJelaText2")}</p>
       </div>
 
       <div className="grid gap-4 lg:gap-8 max-w-[1200px] md:grid-cols-2 mx-auto">
@@ -68,16 +64,12 @@ const Menu = () => {
 
       {/* title div */}
       <div className="text-center mt-16 mb-4 max-w-[1200px] mx-auto">
-        <h1 className="text-[#9e1918] text-3xl font-extrabold">Side Dishes</h1>
+        <h1 className="text-[#9e1918] text-3xl font-extrabold">
+          {t("MeniPriloziNaslov")}
+        </h1>
         <div className="h-1 w-48 bg-[#a62817] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("MeniPriloziText")}</p>
+        <p className="mt-4 text-justify">{t("MeniPriloziText2")}</p>
       </div>
 
       <div className="max-w-[1200px] mx-auto mb-8">

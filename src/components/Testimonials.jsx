@@ -4,7 +4,7 @@ import { withNamespaces } from "react-i18next";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "axios";
 
-const Testimonials = () => {
+const Testimonials = ({ t }) => {
   const [items, setItems] = useState([]);
   const [index, setIndex] = useState(0);
   const displayItem = items?.[index];
@@ -44,16 +44,12 @@ const Testimonials = () => {
     <section className="p-8">
       {/* title div */}
       <div className="text-center max-w-[1200px] mx-auto">
-        <h1 className="text-[#9e1918] text-3xl font-extrabold">Testimonials</h1>
+        <h1 className="text-[#9e1918] text-3xl font-extrabold">
+          {t("TestimonialsNaslov")}
+        </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("TestimonialsText")}</p>
+        <p className="mt-4 text-justify">{t("TestimonialsText2")}</p>
       </div>
 
       <article className="mt-8 max-w-[900px] mx-auto hover:shadow-lg">
@@ -61,11 +57,11 @@ const Testimonials = () => {
           <button type="button" className="float-left" onClick={prevItem}>
             <FaChevronLeft size="3rem" className="fill-[#a62817]" />
           </button>
-          <img
+          {/* <img
             src={displayItem?.image}
             alt={displayItem?.name}
             className="w-32 h-32 rounded-full"
-          />
+          /> */}
           <button type="button" className="float-right" onClick={nextItem}>
             <FaChevronRight size="3rem" className="fill-[#a62817]" />
           </button>
@@ -75,7 +71,7 @@ const Testimonials = () => {
             {displayItem?.name}
           </p>
           <p className="w-full text-md text-slate-800 text-justify">
-            {displayItem?.quoteEng}
+            {language === "en" ? displayItem?.quoteEng : displayItem?.quoteSrb}
           </p>
         </div>
       </article>

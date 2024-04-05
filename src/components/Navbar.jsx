@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaInstagram, FaBars } from "react-icons/fa";
+import { FaFacebook, FaTiktok, FaInstagram, FaBars } from "react-icons/fa";
 import logo from "../assets/images/logo-small.png";
 // import logoBig from "../assets/images/logo-big-4.png";
 import { useNavigationContext } from "../context/NavigationContext";
@@ -104,7 +104,7 @@ const Navbar = ({ t }) => {
             </li>
             <li>
               <Link to="https://wwww.twitter.com" target="_blank">
-                <FaTwitter size="1.5rem" className="hover:fill-[#d75b3f]" />
+                <FaTiktok size="1.5rem" className="hover:fill-[#d75b3f]" />
               </Link>
             </li>
             <li>
