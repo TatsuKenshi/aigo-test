@@ -91,7 +91,7 @@ const Navbar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("en");
-              setCurrentLanguage("ENG");
+              setCurrentLanguage("en");
             }}
           >
             <img src={english} alt="english" className="w-6" />
@@ -100,7 +100,7 @@ const Navbar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("sr");
-              setCurrentLanguage("SRB");
+              setCurrentLanguage("sr");
             }}
           >
             <img src={serbian} alt="serbian" className="w-6" />

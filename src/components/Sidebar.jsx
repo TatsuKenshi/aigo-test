@@ -150,7 +150,7 @@ const Sidebar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("en");
-              setCurrentLanguage("ENG");
+              setCurrentLanguage("en");
               setSidebarStatus("hidden");
               setRotateSidebarButton("animate-[spin_0.4s_1]");
               setRotateMenuButton("");
@@ -165,7 +165,7 @@ const Sidebar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("sr");
-              setCurrentLanguage("SRB");
+              setCurrentLanguage("sr");
               setSidebarStatus("hidden");
               setRotateSidebarButton("animate-[spin_0.4s_1]");
               setRotateMenuButton("");

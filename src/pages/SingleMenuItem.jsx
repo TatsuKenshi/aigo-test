@@ -83,15 +83,15 @@ const SingleMenuItem = () => {
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
           <span className="text-[#d75b3f] font-bold">
-            {currentLanguage === "ENG" ? "Description: " : "Opis: "}
+            {currentLanguage === "en" ? "Description: " : "Opis: "}
           </span>{" "}
-          {currentLanguage === "ENG" ? item?.descEng : item?.descSrb}
+          {currentLanguage === "en" ? item?.descEng : item?.descSrb}
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
           <span className="text-[#d75b3f] font-bold">
             {" "}
-            {currentLanguage === "ENG" ? "Options: " : "Opcije: "}{" "}
+            {currentLanguage === "en" ? "Options: " : "Opcije: "}{" "}
           </span>
           {item?.options?.map((option, index) => {
             return (
@@ -108,7 +108,7 @@ const SingleMenuItem = () => {
         <p className="text-[#a62817] text-xl font-bold mb-4 lg:text-2xl text-justify">
           <span className="text-[#d75b3f]">
             {" "}
-            {currentLanguage === "ENG" ? "Price: " : "Cena: "}
+            {currentLanguage === "en" ? "Price: " : "Cena: "}
           </span>{" "}
           {item?.price} rsd
         </p>
@@ -117,7 +117,7 @@ const SingleMenuItem = () => {
         <p className="text-xl text-slate-800 tracking-wide mb-4">
           <span className="text-[#d75b3f] font-bold">
             {" "}
-            {currentLanguage === "ENG" ? "Side dishes: " : "Prilozi: "}{" "}
+            {currentLanguage === "en" ? "Side dishes: " : "Prilozi: "}{" "}
           </span>
           {sides.map((dish, index) => {
             return (
@@ -140,7 +140,7 @@ const SingleMenuItem = () => {
           {language === "en" ? "Back to menu" : "Nazad na meni"}
         </button>
         <p className="text-xl text-slate-800 tracking-wide mt-8">
-          {currentLanguage === "ENG"
+          {currentLanguage === "en"
             ? " Side dishes, as well as options marked with an asterisk (*), are charged extra."
             : "Prilozi i opcije označeni zvezdicom (*) se dodatno naplaćuju."}
         </p>
