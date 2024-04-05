@@ -1,11 +1,12 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/Loading";
+import SingleMenuItem from "./pages/SingleMenuItem";
 
 const HomeLayout = lazy(() => import("./pages/HomeLayout"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Menu = lazy(() => import("./pages/Menu"));
-const SingleMenuItem = lazy(() => import("./pages/SingleMenuItem"));
+// const SingleMenuItem = lazy(() => import("./pages/SingleMenuItem"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));

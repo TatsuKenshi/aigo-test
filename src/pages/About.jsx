@@ -19,14 +19,14 @@ const About = () => {
 
   return (
     <div>
+      {/* <Suspense fallback={<SectionLoading />}>
+        <Story></Story>
+      </Suspense> */}
       <Suspense fallback={<SectionLoading />}>
-        <Story />
+        <Team></Team>
       </Suspense>
       <Suspense fallback={<SectionLoading />}>
-        <Team />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <FuturePlans />
+        <FuturePlans></FuturePlans>
       </Suspense>
     </div>
   );

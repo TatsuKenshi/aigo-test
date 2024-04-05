@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "axios";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 
-const Story = () => {
+const Story = ({ t }) => {
   const [items, setItems] = useState([]);
   const [index, setIndex] = useState(0);
   const displayItem = items?.[index];
@@ -42,17 +44,10 @@ const Story = () => {
       {/* title div */}
       <div className="text-center max-w-[1200px] mx-auto">
         <h1 className="text-[#9e1918] text-3xl font-extrabold">
-          Aigo Story so far...
+          {t("AigoStoryNaslov")}
         </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("AigoStoryText")}</p>
       </div>
 
       <article className="mt-8 max-w-[900px] mx-auto hover:shadow-lg">
@@ -83,4 +78,4 @@ const Story = () => {
     </section>
   );
 };
-export default Story;
+export default withNamespaces()(Story);

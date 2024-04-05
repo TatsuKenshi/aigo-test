@@ -32,14 +32,7 @@ const Team = ({ t }) => {
           {t("AigoTimNaslov")}
         </h1>
         <div className="h-1 w-48 bg-[#9e1918] mx-auto mt-1"></div>
-        <p className="mt-4 text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          adipisci totam explicabo beatae, doloremque repellendus. Eveniet
-          veniam dolore ad distinctio iusto sed provident eos in magni, vero
-          reiciendis inventore quisquam? Maxime a sint mollitia tenetur ipsa
-          tempora harum autem, ullam laborum est adipisci iste atque quas
-          excepturi modi. Esse, magnam?
-        </p>
+        <p className="mt-4 text-justify">{t("AigoTimText")}</p>
       </div>
 
       <div className="max-w-[1200px] mx-auto mt-8">

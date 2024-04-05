@@ -3,6 +3,7 @@ import { useOutletContext, useParams, useNavigate } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 import axios from "axios";
+import i18n from "../i18n";
 
 const SingleMenuItem = () => {
   const [item, setItem] = useState({});
@@ -12,12 +13,14 @@ const SingleMenuItem = () => {
   const navigate = useNavigate();
   const fullMenuItemUrl = process.env.REACT_APP_FULL_MENU_ITEM_URL;
   const sidesUrl = process.env.REACT_APP_SIDES_URL;
+  const language = i18n.language;
+  console.log(language);
 
   const getSingleMenuItem = async () => {
     try {
-      const response = await axios.get(`${fullMenuItemUrl}${myID.id}`);
-      const data = response.data.menuitem;
-      setBigImage(data.bigImg);
+      const response = await axios.get(`${fullMenuItemUrl}${myID?.id}`);
+      const data = response?.data?.menuitem;
+      setBigImage(data?.bigImg);
       setItem(data);
     } catch (error) {
       console.log(error);
@@ -27,7 +30,7 @@ const SingleMenuItem = () => {
   const getAllSideItems = async () => {
     try {
       const response = await axios.get(sidesUrl);
-      const data = response.data.sides;
+      const data = response?.data?.sides;
       setSides(data);
     } catch (error) {
       console.log(error);
@@ -78,7 +81,7 @@ const SingleMenuItem = () => {
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
           <span className="text-[#d75b3f] font-bold">Description: </span>{" "}
-          {item?.descEng}
+          {language === "en" ? item?.descEng : item?.descSrb}
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
