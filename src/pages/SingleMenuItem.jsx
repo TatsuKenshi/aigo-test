@@ -4,6 +4,7 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 import axios from "axios";
 import i18n from "../i18n";
+import { useLanguageContext } from "../context/LanguageContext";
 
 const SingleMenuItem = () => {
   const [item, setItem] = useState({});
@@ -13,8 +14,9 @@ const SingleMenuItem = () => {
   const navigate = useNavigate();
   const fullMenuItemUrl = process.env.REACT_APP_FULL_MENU_ITEM_URL;
   const sidesUrl = process.env.REACT_APP_SIDES_URL;
-  const language = i18n.language;
-  console.log(language);
+  let language = i18n.language;
+  const { currentLanguage } = useLanguageContext();
+  console.log(currentLanguage);
 
   const getSingleMenuItem = async () => {
     try {
@@ -80,12 +82,17 @@ const SingleMenuItem = () => {
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
-          <span className="text-[#d75b3f] font-bold">Description: </span>{" "}
-          {language === "en" ? item?.descEng : item?.descSrb}
+          <span className="text-[#d75b3f] font-bold">
+            {currentLanguage === "ENG" ? "Description: " : "Opis: "}
+          </span>{" "}
+          {currentLanguage === "ENG" ? item?.descEng : item?.descSrb}
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
-          <span className="text-[#d75b3f] font-bold">Options: </span>
+          <span className="text-[#d75b3f] font-bold">
+            {" "}
+            {currentLanguage === "ENG" ? "Options: " : "Opcije: "}{" "}
+          </span>
           {item?.options?.map((option, index) => {
             return (
               <button
@@ -99,12 +106,19 @@ const SingleMenuItem = () => {
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-[#a62817] text-xl font-bold mb-4 lg:text-2xl text-justify">
-          <span className="text-[#d75b3f]">Price: </span> {item?.price} rsd
+          <span className="text-[#d75b3f]">
+            {" "}
+            {currentLanguage === "ENG" ? "Price: " : "Cena: "}
+          </span>{" "}
+          {item?.price} rsd
         </p>
 
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
-          <span className="text-[#d75b3f] font-bold">Side Dishes: </span>
+          <span className="text-[#d75b3f] font-bold">
+            {" "}
+            {currentLanguage === "ENG" ? "Side dishes: " : "Prilozi: "}{" "}
+          </span>
           {sides.map((dish, index) => {
             return (
               <button
@@ -123,11 +137,12 @@ const SingleMenuItem = () => {
             navigate("/menu");
           }}
         >
-          Back to Menu
+          {language === "en" ? "Back to menu" : "Nazad na meni"}
         </button>
         <p className="text-xl text-slate-800 tracking-wide mt-8">
-          Side dishes, as well as options marked with an asterisk (*), are
-          charged extra.
+          {currentLanguage === "ENG"
+            ? " Side dishes, as well as options marked with an asterisk (*), are charged extra."
+            : "Prilozi i opcije označeni zvezdicom (*) se dodatno naplaćuju."}
         </p>
       </div>
     </div>

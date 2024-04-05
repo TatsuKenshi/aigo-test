@@ -4,19 +4,23 @@ import logo from "../assets/images/logo-small.png";
 import glovo from "../assets/images/glovo-logo.png";
 import mrd from "../assets/images/mrd-logo.png";
 import wolt from "../assets/images/wolt-logo.png";
+import i18n from "../i18n";
+import { withNamespaces } from "react-i18next";
 
-const Footer = () => {
+const Footer = ({ t }) => {
+  const language = i18n.language;
+
   return (
     <footer className="p-8 bg-[#d75b3f] text-white">
       {/* content section */}
       <section className="max-w-[1200px] mx-auto h-full flex flex-wrap">
         <div className="w-full md:w-1/2 lg:w-1/4 mb-12 md:mb-8">
-          <h4>Aigo Eat</h4>
+          <h4> {t("FooterAigoEat")}</h4>
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <div>
             <img src={logo} alt="logo" className="w-16 h-16" />
           </div>
-          <h4 className="mt-2">Aigo Partners</h4>
+          <h4 className="mt-2">{t("FooterAigoPartneri")}</h4>
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <div className="flex">
             <a href="https://glovoapp.com/" target="_blank" rel="noreferrer">
@@ -31,56 +35,57 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/4 mb-12 md:mb-8">
-          <h4>About</h4>
+          <h4>{t("FooterAboutNaslov")}</h4>
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <p>
-            Company Seat <br /> 1625 Washington Avenue
+            {t("FooterSedišteKompanijeNaslov")} <br />{" "}
+            {t("FooterSedišteKompanijeText")}
           </p>
           <p>
-            Hours
+            {t("FooterRadnoVremeNaslov")}
             <br />
-            Mon-Fri: 10-22
+            {t("FooterRadnoVremeText")}
             <br />
-            Sat: 12-20
+            {t("FooterRadnoVremeTextSubota")}
           </p>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/4 mb-12 md:mb-8">
-          <h4>Contact</h4>
+          <h4>{t("FooterKontaktNaslov")}</h4>
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <p>
-            Contact Phone <br />
-            +381 66 426 624
+            {t("FooterKontaktBrojNaslov")} <br />
+            {t("FooterKontaktBrojText")}
           </p>
           <p>
-            Contact Email
+            {t("FooterKontaktimejlNaslov")}
             <br />
             <a href="" className="underline">
-              info@aigokoreanfood.rs
+              {t("FooterKontaktImejlText")}
             </a>
             <br />
-            For business inquiries
+            {t("FooterBiznisImejlNaslov")}
             <br />
             <a href="" className="underline">
-              office@aigokoreanfood.rs
+              {t("FooterBiznisImejlText")}
             </a>
           </p>
         </div>
 
         {/* links section */}
         <div className="w-full md:w-1/2 lg:w-1/4 mb-12 md:mb-8">
-          <h4>Links</h4>
+          <h4>L{t("FooterLinkoviNaslov")}</h4>
           <div className="h-[4px] w-full md:w-11/12 max-w-[1200px] bg-yellow-100 bg-opacity-70 my-2"></div>
           <p>
-            <Link to="/">{"Home"}</Link>
+            <Link to="/">{t("FooterPočetnaNaslov")}</Link>
           </p>
           <p>
-            <Link to="/menu">{"Menu"}</Link>
+            <Link to="/menu">{t("FooterMeniNaslov")}</Link>
           </p>
           <p>
-            <Link to="/contact">{"Contact"}</Link>
+            <Link to="/contact">{t("FooterKontaktNaslov")}</Link>
           </p>
           <p>
-            <Link to="/about">{"About"}</Link>
+            <Link to="/about">{t("FooterOnamaNaslov")}</Link>
           </p>
         </div>
         <div className="h-[4px] w-full max-w-[1200px] bg-yellow-100 bg-opacity-70 mx-auto my-2"></div>
@@ -110,10 +115,10 @@ const Footer = () => {
           &copy; {new Date().getFullYear()}
           <span className="ml-1">Aigo Eat</span>
         </h5>
-        <h5 className="ml-1">All rights reserved.</h5>
+        <h5 className="ml-1">{t("FooterSvaPrava")}</h5>
       </section>
     </footer>
   );
 };
 
-export default Footer;
+export default withNamespaces()(Footer);

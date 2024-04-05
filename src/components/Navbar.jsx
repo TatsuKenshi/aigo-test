@@ -3,6 +3,7 @@ import { FaFacebook, FaTiktok, FaInstagram, FaBars } from "react-icons/fa";
 import logo from "../assets/images/logo-small.png";
 // import logoBig from "../assets/images/logo-big-4.png";
 import { useNavigationContext } from "../context/NavigationContext";
+import { useLanguageContext } from "../context/LanguageContext";
 import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
 import english from "../assets/images/english.png";
@@ -19,6 +20,8 @@ const Navbar = ({ t }) => {
     setRotateMenuButton,
     setRotateSidebarButton,
   } = useNavigationContext();
+
+  const { setCurrentLanguage } = useLanguageContext();
 
   return (
     <nav className="px-8 h-24 bg-[#9e1918] text-white drop-shadow-2xl">
@@ -85,11 +88,21 @@ const Navbar = ({ t }) => {
 
         {/* language buttons section */}
         <div className="w-content gap-4 hidden lg:flex">
-          <button onClick={() => changeLanguage("en")}>
+          <button
+            onClick={() => {
+              changeLanguage("en");
+              setCurrentLanguage("ENG");
+            }}
+          >
             <img src={english} alt="english" className="w-6" />
           </button>
 
-          <button onClick={() => changeLanguage("sr")}>
+          <button
+            onClick={() => {
+              changeLanguage("sr");
+              setCurrentLanguage("SRB");
+            }}
+          >
             <img src={serbian} alt="serbian" className="w-6" />
           </button>
         </div>

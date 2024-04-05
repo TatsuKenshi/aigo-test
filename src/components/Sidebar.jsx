@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 // import i18next from "i18next";
 import { FaTimes } from "react-icons/fa";
 import { useNavigationContext } from "../context/NavigationContext";
+import { useLanguageContext } from "../context/LanguageContext";
 import logo from "../assets/images/logo-small.png";
 import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
@@ -21,6 +22,8 @@ const Sidebar = ({ t }) => {
     setRotateMenuButton,
     setRotateSidebarButton,
   } = useNavigationContext();
+
+  const { setCurrentLanguage } = useLanguageContext();
 
   return (
     <aside
@@ -147,6 +150,7 @@ const Sidebar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("en");
+              setCurrentLanguage("ENG");
               setSidebarStatus("hidden");
               setRotateSidebarButton("animate-[spin_0.4s_1]");
               setRotateMenuButton("");
@@ -161,6 +165,7 @@ const Sidebar = ({ t }) => {
           <button
             onClick={() => {
               changeLanguage("sr");
+              setCurrentLanguage("SRB");
               setSidebarStatus("hidden");
               setRotateSidebarButton("animate-[spin_0.4s_1]");
               setRotateMenuButton("");
