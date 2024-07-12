@@ -12,8 +12,10 @@ const Menu = ({ t }) => {
   // const { menuItemsShort, sideDishes } = useOutletContext();
   const [menuItems, setMenuItems] = useState([]);
   const [sides, setSides] = useState([]);
+  const [addons, setAddons] = useState([]);
   const menuItemsUrl = process.env.REACT_APP_MENU_ITEMS_URL;
   const sidesUrl = process.env.REACT_APP_SIDES_URL;
+  const addonsUrl = process.env.REACT_APP_ADDONS_URL;
 
   const getAllMenuItems = async () => {
     try {
@@ -35,6 +37,16 @@ const Menu = ({ t }) => {
     }
   };
 
+  const getAllAddons = async () => {
+    try {
+      const response = await axios.get(addonsUrl);
+      const data = response.data.addons;
+      setAddons(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const { changeTitle } = usePageTitle();
   const language = i18n.language;
 
@@ -42,6 +54,7 @@ const Menu = ({ t }) => {
     changeTitle({ language: language, enTitle: "Menu", srTitle: "Meni" });
     getAllMenuItems();
     getAllSideItems();
+    getAllAddons();
   }, [language, changeTitle]);
 
   return (
@@ -74,6 +87,22 @@ const Menu = ({ t }) => {
 
       <div className="max-w-[1200px] mx-auto mb-8">
         {sides.map((item) => {
+          return <SideDishCard key={item._id} {...item} />;
+        })}
+      </div>
+
+      {/* title div */}
+      <div className="text-center mt-16 mb-4 max-w-[1200px] mx-auto">
+        <h1 className="text-[#9e1918] text-3xl font-extrabold">
+          {/* {t("MeniPriloziNaslov")} */} Dodaci / Addons
+        </h1>
+        <div className="h-1 w-48 bg-[#a62817] mx-auto mt-1"></div>
+        <p className="mt-4 text-justify">{t("MeniPriloziText")}</p>
+        <p className="mt-4 text-justify">{t("MeniPriloziText2")}</p>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto mb-8">
+        {addons.map((item) => {
           return <SideDishCard key={item._id} {...item} />;
         })}
       </div>
