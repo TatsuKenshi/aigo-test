@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "axios";
-import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
+import heroSmall from "../assets/images/loading-small.jpeg";
 
 const Story = ({ t }) => {
   const [items, setItems] = useState([]);
@@ -53,7 +52,7 @@ const Story = ({ t }) => {
       <article className="mt-8 max-w-[900px] mx-auto hover:shadow-lg">
         <div className="w-full mb-4 h-[250px] sm:h-[450px]">
           <img
-            src={displayItem?.image}
+            src={displayItem?.image || heroSmall}
             alt={displayItem?.name}
             className="w-full h-full"
           />

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import i18n from "../i18n";
 import ProgressiveImage from "react-progressive-graceful-image";
-import heroSmall from "../assets/images/hero-test-small.jpg";
+import heroSmall from "../assets/images/loading-small.jpeg";
 
 const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
   const navigate = useNavigate();
@@ -22,14 +22,14 @@ const MenuPreviewCard = ({ img, name, price, descEng, descSrb }) => {
         )}
       </ProgressiveImage>
       <div className="py-4 px-2">
-        <p className="text-[#a62817] capitalize mb-2 font-bold">{name}</p>
+        <p className="text-[#a62817] capitalize font-bold">{name}</p>
+        <p className=" text-[#9e1918] mb-2">{price} rsd</p>
         <p className="text-md text-slate-800 tracking-wide mb-4 text-justify">
           {language === "en"
             ? descEng.substring(0, 200)
             : descSrb.substring(0, 200)}
           ...
         </p>
-        <p className="mt-4 text-[#d75b3f]">{price} rsd</p>
         <div className="mt-4 flex gap-x-4">
           <button
             className="w-full py-4 bg-[#a62817] rounded-lg text-white font-bold"

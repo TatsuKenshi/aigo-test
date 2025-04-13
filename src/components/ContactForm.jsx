@@ -36,8 +36,6 @@ const ContactForm = () => {
         token,
       });
 
-      console.log(response);
-
       if (response.data === "Human 👨 👩") {
         const myName = getValues("user_name");
         const myMail = getValues("user_email");

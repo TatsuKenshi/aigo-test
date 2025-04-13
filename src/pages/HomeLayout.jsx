@@ -1,5 +1,5 @@
 import { useState, lazy } from "react";
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useNavigation, useLocation } from "react-router-dom";
 import {
   menuItemsFull,
   menuItemsShort,
@@ -10,8 +10,8 @@ import {
   story,
 } from "../data";
 import ScrollReset from "../components/ScrollReset";
-// import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
+import BigOrdersModal from "../components/BigOrdersModal";
 
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
@@ -25,10 +25,12 @@ const HomeLayout = () => {
 
   const [item, setItem] = useState({});
   const [sidebarStatus, setSidebarStatus] = useState("hidden");
+  let location = useLocation();
 
   return (
     <main>
       <ScrollReset>
+        {location.pathname.match("/") ? <BigOrdersModal /> : null}
         <Navbar />
         <Sidebar />
         <Hero />

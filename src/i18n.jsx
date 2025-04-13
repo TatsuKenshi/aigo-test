@@ -20,8 +20,9 @@ i18n
   .use(reactI18nextModule) // passes i18n down to react-i18next
   .init({
     resources,
-    // lng: "en", preserves language between reloads
-    fallbackLng: "en", // use sr if detected lng is not available
+    // lng: "sr", preserves language between reloads
+    lng: localStorage.getItem("i18nextLng") || "sr",
+    fallbackLng: "sr", // use sr if detected language is not available
 
     keySeparator: false, // we do not use keys in form messages.welcome
 

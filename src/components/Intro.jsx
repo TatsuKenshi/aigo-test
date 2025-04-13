@@ -1,13 +1,10 @@
 import { lazy, Suspense } from "react";
-import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
 import SectionLoading from "./SectionLoading";
 
 const SlickCarousel = lazy(() => import("./SlickCarousel"));
 
 const Intro = ({ t }) => {
-  const language = i18n.language;
-
   return (
     <section className="px-8">
       {/* title div */}

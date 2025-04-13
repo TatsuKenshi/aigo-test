@@ -1,8 +1,8 @@
 import ProgressiveImage from "react-progressive-graceful-image";
-import heroSmall from "../assets/images/hero-test-small.jpg";
+import heroSmall from "../assets/images/loading-small.jpeg";
 import i18n from "../i18n";
 
-const TeamMember = ({ name, job, image, textEng, textSrb, jobEng, jobSrb }) => {
+const TeamMember = ({ name, image, textEng, textSrb, jobEng, jobSrb }) => {
   const language = i18n.language;
 
   return (
@@ -24,7 +24,7 @@ const TeamMember = ({ name, job, image, textEng, textSrb, jobEng, jobSrb }) => {
         <p className="mt-4 text-[#a62817] capitalize font-bold text-2xl">
           {name}
         </p>
-        <p className="my-2 text-[#d75b3f] font-bold capitalize text-xl">
+        <p className="my-2 text-[#9e1918] font-bold capitalize text-xl">
           {language === "en" ? jobEng : jobSrb}
         </p>
         <p className="my-2 text-md text-slate-800 h-content min-h-32 text-justify">

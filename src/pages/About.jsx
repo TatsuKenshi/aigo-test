@@ -5,7 +5,7 @@ import { withNamespaces } from "react-i18next";
 import SectionLoading from "../components/SectionLoading";
 
 const Team = lazy(() => import("../components/Team"));
-const Story = lazy(() => import("../components/Story"));
+// const Story = lazy(() => import("../components/Story"));
 const FuturePlans = lazy(() => import("../components/FuturePlans"));
 
 const About = () => {

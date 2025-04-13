@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { useOutletContext, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
 import heroSmall from "../assets/images/hero-test-small.jpg";
 import axios from "axios";
 import i18n from "../i18n";
 import { useLanguageContext } from "../context/LanguageContext";
+import glovo from "../assets/images/glovo-logo.png";
+import wolt from "../assets/images/wolt-logo.png";
 
 const SingleMenuItem = () => {
   const [item, setItem] = useState({});
@@ -16,7 +18,6 @@ const SingleMenuItem = () => {
   const sidesUrl = process.env.REACT_APP_SIDES_URL;
   let language = i18n.language;
   const { currentLanguage } = useLanguageContext();
-  console.log(currentLanguage);
 
   const getSingleMenuItem = async () => {
     try {
@@ -82,14 +83,14 @@ const SingleMenuItem = () => {
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4 text-justify">
-          <span className="text-[#d75b3f] font-bold">
+          <span className="text-[#9e1918] font-bold">
             {currentLanguage === "en" ? "Description: " : "Opis: "}
           </span>{" "}
           {currentLanguage === "en" ? item?.descEng : item?.descSrb}
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
-          <span className="text-[#d75b3f] font-bold">
+          <span className="text-[#9e1918] font-bold">
             {" "}
             {currentLanguage === "en" ? "Options: " : "Opcije: "}{" "}
           </span>
@@ -106,7 +107,7 @@ const SingleMenuItem = () => {
         </p>
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-[#a62817] text-xl font-bold mb-4 lg:text-2xl text-justify">
-          <span className="text-[#d75b3f]">
+          <span className="text-[#9e1918]">
             {" "}
             {currentLanguage === "en" ? "Price: " : "Cena: "}
           </span>{" "}
@@ -115,7 +116,7 @@ const SingleMenuItem = () => {
 
         <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
         <p className="text-xl text-slate-800 tracking-wide mb-4">
-          <span className="text-[#d75b3f] font-bold">
+          <span className="text-[#9e1918] font-bold">
             {" "}
             {currentLanguage === "en" ? "Side dishes: " : "Prilozi: "}{" "}
           </span>
@@ -131,6 +132,37 @@ const SingleMenuItem = () => {
           })}
         </p>
 
+        <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
+        <p className="text-2xl text-slate-800 tracking-wide mb-4">
+          <span className="text-[#9e1918] font-bold">
+            {" "}
+            {currentLanguage === "en" ? "Order on: " : "Naručite na: "}{" "}
+          </span>
+          <div className="flex">
+            <a
+              href="https://glovoapp.com/rs/sr/beograd/aigo-eat-korean-restaurant-beg/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={glovo} alt="logo" className="w-12 h-12 mr-4" />
+            </a>
+            <a
+              href="https://wolt.com/en/srb/belgrade/restaurant/aigoeat"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={wolt} alt="logo" className="w-12 h-12" />
+            </a>
+          </div>
+        </p>
+
+        <div className="w-full h-[1px] bg-slate-400 mb-4"></div>
+        <p className="text-xl text-slate-800 tracking-wide mt-8">
+          {currentLanguage === "en"
+            ? " Side dishes, as well as options marked with an asterisk (*), are charged extra."
+            : "Prilozi i opcije označeni zvezdicom (*) se dodatno naplaćuju."}
+        </p>
+
         <button
           className="w-full py-4 bg-[#a62817] rounded-lg text-white font-bold mt-4"
           onClick={() => {
@@ -139,11 +171,6 @@ const SingleMenuItem = () => {
         >
           {language === "en" ? "Back to menu" : "Nazad na meni"}
         </button>
-        <p className="text-xl text-slate-800 tracking-wide mt-8">
-          {currentLanguage === "en"
-            ? " Side dishes, as well as options marked with an asterisk (*), are charged extra."
-            : "Prilozi i opcije označeni zvezdicom (*) se dodatno naplaćuju."}
-        </p>
       </div>
     </div>
   );

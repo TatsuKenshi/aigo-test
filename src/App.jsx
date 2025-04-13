@@ -6,20 +6,10 @@ import SingleMenuItem from "./pages/SingleMenuItem";
 const HomeLayout = lazy(() => import("./pages/HomeLayout"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Menu = lazy(() => import("./pages/Menu"));
-// const SingleMenuItem = lazy(() => import("./pages/SingleMenuItem"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
+const BlogHome = lazy(() => import("./pages/BlogHome"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
-
-// kontakt (reCaptcha/reAptcha)
-// cookie consent (videti sta je problem)
-// nauci nodemailer
-// terms of use strana
-// lokalizacija do kraja
-// lazy loading slika (svih)
-// What's in store sekcija
-// // // mission & vision u gornjem redu
-// // // future plans & milestones u drugom
 
 const router = createBrowserRouter([
   {
@@ -64,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "blog",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <BlogHome />
           </Suspense>
         ),
       },

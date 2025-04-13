@@ -1,12 +1,9 @@
-// import { useOutletContext } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TeamMember from "../components/TeamMember";
-// import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
 
 const Team = ({ t }) => {
-  // const { people } = useOutletContext();
   const [employees, setEmployees] = useState([]);
   const employeesUrl = process.env.REACT_APP_EMPLOYEES_URL;
 

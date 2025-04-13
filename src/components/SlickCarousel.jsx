@@ -1,15 +1,13 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProgressiveImage from "react-progressive-graceful-image";
-import heroSmall from "../assets/images/hero-test-small.jpg";
-// import { useOutletContext } from "react-router-dom";
+import heroSmall from "../assets/images/loading-small.jpeg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Slider from "react-slick";
 
 const SlickCarousel = () => {
-  // const { introImages } = useOutletContext();
   const [items, setItems] = useState([]);
   const introImagesUrl = process.env.REACT_APP_INTRO_IMAGES_URL;
 

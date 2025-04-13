@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { FaFacebook, FaTiktok, FaInstagram, FaBars } from "react-icons/fa";
 import logo from "../assets/images/logo-small.png";
-// import logoBig from "../assets/images/logo-big-4.png";
 import { useNavigationContext } from "../context/NavigationContext";
 import { useLanguageContext } from "../context/LanguageContext";
 import i18n from "../i18n";
@@ -38,10 +37,15 @@ const Navbar = ({ t }) => {
             <li>
               <NavLink
                 to="/"
+                // className={({ isActive }) =>
+                //   isActive
+                //     ? "text-[#d75b3f] font-bold text-3xl"
+                //     : "hover:text-[#d75b3f]  font-bold"
+                // }
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#d75b3f] font-bold text-3xl"
-                    : "hover:text-[#d75b3f]  font-bold"
+                    ? "text-[#fff] hover:text-[#d75b3f] font-bold text-3xl"
+                    : "text-[#fff] hover:text-[#d75b3f] font-bold"
                 }
               >
                 {t("Početna")}
@@ -50,10 +54,15 @@ const Navbar = ({ t }) => {
             <li>
               <NavLink
                 to="/menu"
+                // className={({ isActive }) =>
+                //   isActive
+                //     ? "text-[#d75b3f] font-bold text-3xl"
+                //     : "hover:text-[#d75b3f]  font-bold"
+                // }
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#d75b3f] font-bold text-3xl"
-                    : "hover:text-[#d75b3f]  font-bold"
+                    ? "text-[#fff] hover:text-[#d75b3f] font-bold text-3xl"
+                    : "text-[#fff] hover:text-[#d75b3f] font-bold"
                 }
               >
                 {t("Meni")}
@@ -62,10 +71,15 @@ const Navbar = ({ t }) => {
             <li>
               <NavLink
                 to="/contact"
+                // className={({ isActive }) =>
+                //   isActive
+                //     ? "text-[#d75b3f] font-bold text-3xl"
+                //     : "hover:text-[#d75b3f]  font-bold"
+                // }
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#d75b3f] font-bold text-3xl"
-                    : "hover:text-[#d75b3f]  font-bold"
+                    ? "text-[#fff] hover:text-[#d75b3f] font-bold text-3xl"
+                    : "text-[#fff] hover:text-[#d75b3f] font-bold"
                 }
               >
                 {t("Kontakt")}
@@ -74,10 +88,15 @@ const Navbar = ({ t }) => {
             <li>
               <NavLink
                 to="/about"
+                // className={({ isActive }) =>
+                //   isActive
+                //     ? "text-[#d75b3f] font-bold text-3xl"
+                //     : "hover:text-[#d75b3f]  font-bold"
+                // }
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#d75b3f] font-bold text-3xl"
-                    : "hover:text-[#d75b3f]  font-bold"
+                    ? "text-[#fff] hover:text-[#d75b3f] font-bold text-3xl"
+                    : "text-[#fff] hover:text-[#d75b3f] font-bold"
                 }
               >
                 {t("O nama")}
@@ -111,17 +130,20 @@ const Navbar = ({ t }) => {
         <div>
           <ul className="h-24 items-center gap-4 hidden lg:flex text-[#ffffef]">
             <li>
-              <Link to="https://wwww.facebook.com" target="_blank">
+              <Link
+                to="https://www.facebook.com/profile.php?id=61553023137564"
+                target="_blank"
+              >
                 <FaFacebook size="1.5rem" className="hover:fill-[#d75b3f]" />
               </Link>
             </li>
             <li>
-              <Link to="https://wwww.twitter.com" target="_blank">
+              <Link to="https://www.tiktok.com/@aigo_eat" target="_blank">
                 <FaTiktok size="1.5rem" className="hover:fill-[#d75b3f]" />
               </Link>
             </li>
             <li>
-              <Link to="https://wwww.instagram.com" target="_blank">
+              <Link to="https://www.instagram.com/aigo_eat" target="_blank">
                 <FaInstagram size="1.5rem" className="hover:fill-[#d75b3f]" />
               </Link>
             </li>
@@ -137,7 +159,7 @@ const Navbar = ({ t }) => {
               setRotateSidebarButton("");
             }}
           >
-            <FaBars className={`fill-[#d75b3f] h-8 w-8 ${rotateMenuButton}`} />
+            <FaBars className={`fill-[#fff] h-8 w-8 ${rotateMenuButton}`} />
           </button>
         </div>
       </section>

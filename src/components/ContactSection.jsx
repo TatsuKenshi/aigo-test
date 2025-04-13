@@ -1,10 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import i18n from "../i18n";
 import { withNamespaces } from "react-i18next";
 
 const ContactSection = ({ t }) => {
-  const navigate = useNavigate();
   return (
     <section className="py-8 bg-[#ffffef]">
       {/* title div */}
@@ -20,17 +18,20 @@ const ContactSection = ({ t }) => {
         {/* social links */}
         <ul className=" flex justify-center gap-4 text-[#ffffef] mt-8 mb-4">
           <li>
-            <Link to="https://wwww.facebook.com" target="_blank">
+            <Link
+              to="https://www.facebook.com/profile.php?id=61553023137564"
+              target="_blank"
+            >
               <FaFacebook size="3.5rem" className="fill-[#9e1918]" />
             </Link>
           </li>
           <li>
-            <Link to="https://wwww.tiktok.com" target="_blank">
+            <Link to="https://www.tiktok.com/@aigo_eat" target="_blank">
               <FaTiktok size="3.5rem" className="fill-[#9e1918]" />
             </Link>
           </li>
           <li>
-            <Link to="https://wwww.instagram.com" target="_blank">
+            <Link to="https://www.instagram.com/aigo_eat" target="_blank">
               <FaInstagram size="3.5rem" className="fill-[#9e1918]" />
             </Link>
           </li>

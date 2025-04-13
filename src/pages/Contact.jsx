@@ -32,7 +32,7 @@ const Contact = ({ t }) => {
             href="mailto:office@aigokoreanfood.rs"
             className="underline hover:text-[#d75b3f]"
           >
-            office@aigokoreanfood.rs
+            info@aigokoreanfood.rs
           </a>
         </p>
       </div>

@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import ProgressiveImage from "react-progressive-graceful-image";
-import heroSmall from "../assets/images/hero-test-small.jpg";
-import hero from "../assets/images/hero-test.jpg";
+import heroSmall from "../assets/images/loading-small.jpeg";
+import hero from "../assets/images/Cover 1.jpeg";
 import logoBig from "../assets/images/logo-big-4.png";
 import glovo from "../assets/images/glovo-logo.png";
-import mrd from "../assets/images/mrd-logo.png";
 import wolt from "../assets/images/wolt-logo.png";
 
 const Hero = () => {
@@ -32,13 +31,18 @@ const Hero = () => {
             Takeout & Delivery
           </h2>
           <span className="absolute bottom-3 right-0 flex">
-            <a href="https://glovoapp.com/" target="_blank" rel="noreferrer">
+            <a
+              href="https://glovoapp.com/rs/sr/beograd/aigo-eat-korean-restaurant-beg/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={glovo} alt="logo" className="w-8 h-8 mr-4" />
             </a>
-            <a href="https://misterd.rs/" target="_blank" rel="noreferrer">
-              <img src={mrd} alt="logo" className="w-8 h-8 mr-4" />
-            </a>
-            <a href="https://wolt.com/sr/srb" target="_blank" rel="noreferrer">
+            <a
+              href="https://wolt.com/en/srb/belgrade/restaurant/aigoeat"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={wolt} alt="logo" className="w-8 h-8" />
             </a>
           </span>
