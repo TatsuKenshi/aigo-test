@@ -77,7 +77,6 @@ const BigOrdersModal = ({ t }) => {
               <button
                 type="button"
                 className="float-right"
-                disabled="true"
                 onClick={() => {
                   setModalVisibility("invisible");
                   sessionStorage.setItem(
