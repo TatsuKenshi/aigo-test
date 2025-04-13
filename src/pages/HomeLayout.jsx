@@ -11,7 +11,7 @@ import {
 } from "../data";
 import ScrollReset from "../components/ScrollReset";
 import { withNamespaces } from "react-i18next";
-import BigOrdersModal from "../components/BigOrdersModal";
+// import BigOrdersModal from "../components/BigOrdersModal";
 
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
@@ -30,7 +30,7 @@ const HomeLayout = () => {
   return (
     <main>
       <ScrollReset>
-        {location.pathname.match("/") ? <BigOrdersModal /> : null}
+        {/* {location.pathname.match("/") ? <BigOrdersModal /> : null} */}
         <Navbar />
         <Sidebar />
         <Hero />
